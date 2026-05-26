@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ВАУ‑Сайт</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>ВАУ‑Сайт</h1>
+        <nav>
+            <ul>
+                <li><a href="#hero">Главная</a></li>
+                <li><a href="#features">Особенности</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li><a href="comments-contacts.html">Оценка и комментарии</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="hero">
+        <h2>Добро пожаловать в мир ВАУ‑эффектов!</h2>
+        <p>Погрузитесь в захватывающий опыт с анимациями, интерактивом и незабываемым дизайном.</p>
+        <button class="cta-btn" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Начать путешествие</button>
+    </section>
+
+    <section id="features">
+        <h2 class="section-title">Особенности</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>Магические анимации</h3>
+                <p>Плавные переходы, парсинг градиентов и эффекты частиц делают каждый элемент живым.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Яркий дизайн</h3>
+                <p>Градиентные фоновые элементы и неоновые акценты создают futuristic атмосферу.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💎</div>
+                <h3>Интерактивная галерея</h3>
+                <p>Наведите на изображения, чтобы увидеть эффект увеличения и затемнения.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📩</div>
+                <h3>Форма обратной связи</h3>
+                <p>Оставьте ваше сообщение, и мы ответим в кратчайшие сроки.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>Система оценок</h3>
+                <p>Оцените сайт звездами и оставьте свой отзыв.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2 class="section-title">Галерея</h2>
+        <div class="gallery">
+            <div class="gallery-item"><img src="https://picsum.photos/seed/1/600/400" alt="Слайд 1"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/seed/2/600/400" alt="Слайд 2"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/seed/3/600/400" alt="Слайд 3"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/seed/4/600/400" alt="Слайд 4"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/seed/5/600/400" alt="Слайд 5"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/seed/6/600/400" alt="Слайд 6"></div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Контакты</h2>
+        <form class="contact-form" id="contactForm">
+            <input type="text" placeholder="Ваше имя" required>
+            <input type="email" placeholder="Ваш email" required>
+            <textarea placeholder="Ваше сообщение" rows="5" required></textarea>
+            <button type="submit">Отправить</button>
+        </form>
+    </section>
+
+    <section id="rating" class="rating">
+        <h3>Оцените наш сайт</h3>
+        <div class="stars" id="starContainer">
+        </div>
+        <div class="rating-result" id="ratingResult">Ваша оценка: </div>
+        <div class="comment-section">
+            <textarea id="commentInput" placeholder="Напишите комментарий к вашей оценке..." rows="3"></textarea>
+            <button id="submitComment">Оставить комментарий</button>
+        </div>
+        <div id="commentsList">
+            <h4>Комментарии:</h4>
+            <div id="commentsContainer"></div>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 ВАУ‑Сайт. Все права защищены.
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

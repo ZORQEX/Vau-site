@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Комментарии и контакты - ВАУ‑Сайт</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>ВАУ‑Сайт</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="comments-contacts.html" class="active">Комментарии и контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="rating" style="margin: 2rem 5%;">
+        <h2>Комментарии пользователей</h2>
+        <div id="commentsListPage">
+        </div>
+    </section>
+
+    <section class="rating" style="margin: 2rem 5%;">
+        <h2>Контактные сообщения</h2>
+        <div id="contactsListPage">
+        </div>
+    </section>
+
+    <footer>
+        © 2026 ВАУ‑Сайт. Все права защищены.
+    </footer>
+
+    <script>
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        const commentsContainer = document.getElementById('commentsListPage');
+        const savedComments = localStorage.getItem('siteComments');
+        let comments = savedComments ? JSON.parse(savedComments) : [];
+        if (comments.length === 0) {
+            commentsContainer.innerHTML = '<p>Пока нет комментариев.</p>';
+        } else {
+            commentsContainer.innerHTML = ''; // clear
+            comments.forEach((comment, index) => {
+                const commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment-item');
+                commentDiv.innerHTML = `
+                    <div class="rating">Оценка: ${comment.rating} из 5</div>
+                    <div class="text">${escapeHtml(comment.text)}</div>
+                    <div class="date">${new Date(comment.timestamp).toLocaleString()}</div>
+                `;
+                commentsContainer.appendChild(commentDiv);
+            });
+        }
+
+        const contactsContainer = document.getElementById('contactsListPage');
+        const savedMessages = localStorage.getItem('siteMessages');
+        let contactMessages = savedMessages ? JSON.parse(savedMessages) : [];
+        if (contactMessages.length === 0) {
+            contactsContainer.innerHTML = '<p>Пока нет контактных сообщений.</p>';
+        } else {
+            contactsContainer.innerHTML = '';
+            contactMessages.forEach((msg, index) => {
+                const msgDiv = document.createElement('div');
+                msgDiv.classList.add('comment-item'); // reuse styling
+                msgDiv.innerHTML = `
+                    <div><strong>Имя:</strong> ${escapeHtml(msg.name)}</div>
+                    <div><strong>Email:</strong> ${escapeHtml(msg.email)}</div>
+                    <div><strong>Сообщение:</strong> ${escapeHtml(msg.message)}</div>
+                    <div class="date">${new Date(msg.timestamp).toLocaleString()}</div>
+                `;
+                contactsContainer.appendChild(msgDiv);
+            });
+        }
+    </script>
+</body>
+</html>
